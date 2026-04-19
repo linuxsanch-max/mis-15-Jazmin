@@ -1,242 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis 15 Años - Jazmin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mis 15 Años - Jazmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&family=Great+Vibes&family=Prata&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --turquesa-real: #003F3F;
+            --turquesa-luz: #00B4A8;
+            --oro-puro: #E8C56E;
+            --fondo-noche: #010606;
+            --papel: #FFF8E8;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&family=Prata&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<style>
-:root {
-    --turquesa-real: #004e4e;
-    --turquesa-luz: #0aa3a3;
-    --oro-puro: #d4af37;
-    --fondo-noche: #010606;
-    --papel: #fffaf0;
-}
+        body {
+            margin: 0;
+            height: 100vh;
+            background: var(--fondo-noche);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Prata', serif;
+        }
 
-body {
-    margin: 0;
-    background-color: var(--fondo-noche);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'Prata', serif;
-}
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(0,180,168,0.12) 1px, transparent 0),
+                        radial-gradient(circle at 70% 80%, rgba(232,197,110,0.12) 1px, transparent 0);
+            background-size: 80px 80px;
+            opacity: 0.9;
+            z-index: 1;
+        }
 
-/* Fondo elegante */
-.stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 30%, rgba(10,163,163,0.15), transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(212,175,55,0.15), transparent 40%),
-                #010606;
-}
+        .envelope-wrapper {
+            position: relative;
+            width: min(92vw, 340px);
+            height: 240px;
+            perspective: 1800px;
+            cursor: pointer;
+            z-index: 10;
+        }
 
-/* SOBRE */
-.envelope-wrapper {
-    position: relative;
-    cursor: pointer;
-    width: 320px;
-    height: 220px;
-    perspective: 1500px;
-    z-index: 10;
-}
+        .envelope-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--turquesa-real);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            border: 4px solid var(--oro-puro);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.85);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            z-index: 3;
+        }
 
-.envelope-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--turquesa-real);
-    background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-    border: 2px solid var(--oro-puro);
-    z-index: 3;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 50%, 100% 0);
-}
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--turquesa-luz);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            border-top: 4px solid var(--oro-puro);
+            z-index: 4;
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+            transform-origin: top;
+            transition: transform 1.1s cubic-bezier(0.6, 0, 0.3, 1);
+        }
 
-.flap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: var(--turquesa-luz);
-    background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-    border-top: 2px solid var(--oro-puro);
-    z-index: 4;
-    clip-path: polygon(0 0, 100% 0, 50% 50%);
-    transform-origin: top;
-    transition: transform 0.7s ease;
-}
+        .seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 68px;
+            background: radial-gradient(circle, #f8e8b8, var(--oro-puro));
+            border: 3px solid var(--oro-puro);
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cinzel Decorative', cursive;
+            color: #3d2a00;
+            font-size: 1.7rem;
+            box-shadow: 0 4px 15px rgba(232,197,110,0.6);
+        }
 
-.seal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 55px;
-    height: 55px;
-    background: radial-gradient(circle, #f1d570, var(--oro-puro));
-    border-radius: 50%;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Cinzel Decorative', cursive;
-    color: #5a4300;
-    font-size: 1.3rem;
-}
+        .card {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: calc(100% - 24px);
+            height: 200px;
+            background: var(--papel);
+            border: 3px solid var(--oro-puro);
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            overflow-y: auto;
+            transition: all 1.1s cubic-bezier(0.6, 0, 0.3, 1);
+            z-index: 2;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+        }
 
-/* CARTA */
-.card {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    width: 300px;
-    height: 200px;
-    background: var(--papel);
-    border: 2px solid var(--oro-puro);
-    border-radius: 6px;
-    padding: 20px 15px;
-    box-sizing: border-box;
-    text-align: center;
-    overflow-y: auto;
-    transition: transform 0.8s ease, height 0.8s ease;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-}
+        .envelope-wrapper.open .flap { transform: rotateX(180deg); }
+        .envelope-wrapper.open .seal { opacity: 0; }
+        .envelope-wrapper.open .card {
+            transform: translateY(-195px) scale(1.03);
+            height: 520px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.85);
+        }
 
-/* marco interno */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border: 1px solid rgba(212,175,55,0.4);
-    pointer-events: none;
-}
+        .subtitle {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--oro-puro);
+            margin-bottom: 4px;
+        }
 
-/* CONTENIDO FLEX */
-.card-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.35rem;
+            color: var(--turquesa-real);
+            margin-bottom: 6px;
+        }
 
-/* ANIMACIÓN */
-.envelope-wrapper.open .flap {
-    transform: rotateX(180deg);
-    z-index: 0;
-}
+        .name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.85rem;
+            color: var(--turquesa-real);
+            margin: 8px 0 12px;
+        }
 
-.envelope-wrapper.open .seal {
-    opacity: 0;
-}
+        .main-text {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #333;
+            margin: 15px 0;
+        }
 
-.envelope-wrapper.open .card {
-    transform: translateY(-180px);
-    height: 480px;
-    z-index: 10;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
-}
+        .divider {
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--oro-puro), transparent);
+            margin: 18px auto;
+        }
 
-/* TEXTOS */
-.subtitle {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    color: #aa8a2e;
-}
+        .info {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #222;
+            margin-bottom: 18px;
+        }
 
-h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    color: #aa8a2e;
-    font-size: 1.2rem;
-    margin: 5px 0;
-}
+        .dress-code {
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: var(--oro-puro);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
 
-.name {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;
-    color: var(--turquesa-real);
-    font-style: italic;
-    margin: 5px 0;
-    text-shadow: 0 0 10px rgba(10,163,163,0.3);
-}
+        .buttons {
+            margin-top: auto;
+        }
 
-.main-text {
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin: 10px 0;
-}
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--turquesa-real), var(--turquesa-luz));
+            border: 2px solid var(--oro-puro);
+            transition: all 0.3s;
+        }
 
-.divider {
-    width: 60%;
-    height: 1px;
-    background: var(--oro-puro);
-    margin: 10px auto;
-}
-
-.info {
-    font-size: 0.9rem;
-}
-
-.dress-code {
-    font-weight: bold;
-    color: #aa8a2e;
-    text-transform: uppercase;
-    margin: 10px 0;
-    font-size: 0.8rem;
-}
-
-/* BOTONES */
-.buttons {
-    margin-top: auto;
-}
-
-.btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border: 1px solid var(--oro-puro);
-    background: linear-gradient(135deg, var(--turquesa-real), var(--turquesa-luz));
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* SCROLL FINO */
-.card::-webkit-scrollbar {
-    width: 4px;
-}
-.card::-webkit-scrollbar-thumb {
-    background: var(--oro-puro);
-}
-</style>
+        .btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(232,197,110,0.4);
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="stars"></div>
+    <div class="stars"></div>
 
-<div class="envelope-wrapper" onclick="this.classList.add('open')">
-
-    <div class="card">
-        <div class="card-content">
-
+    <div class="envelope-wrapper" onclick="this.classList.add('open')">
+        
+        <!-- Carta -->
+        <div class="card">
             <div class="subtitle">UNA NOCHE DE ENSUEÑO</div>
-            <h1>Mis 15 Años</h1>
-
+            <h1>MIS 15 AÑOS</h1>
             <div class="name">Jazmin</div>
 
             <div class="main-text">
@@ -257,17 +223,14 @@ h1 {
                 <a href="https://wa.me/595982432818" class="btn">CONFIRMAR ASISTENCIA</a>
                 <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
             </div>
+        </div>
 
+        <!-- Sobre -->
+        <div class="envelope-front"></div>
+        <div class="flap">
+            <div class="seal">J</div>
         </div>
     </div>
-
-    <div class="envelope-front"></div>
-
-    <div class="flap">
-        <div class="seal">J</div>
-    </div>
-
-</div>
 
 </body>
 </html>
