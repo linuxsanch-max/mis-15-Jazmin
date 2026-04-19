@@ -1,98 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen Vertical Video</title>
+    <title>Mis 15 Años - Jazmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --turquesa: #006666; /* Un turquesa más profundo y elegante */
+            --turquesa-claro: #008B8B;
+            --dorado: #D4AF37;
+            --dorado-brillante: #F1D570;
+            --oscuro: #051014;
+            --pergamino: #FCFAEE;
+        }
+
         body {
             margin: 0;
-            overflow: hidden;
-            background-color: black;
-            color: white;
-        }
-        .video-container {
-            position: relative;
-            width: 100vw;
+            background-color: var(--oscuro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             overflow: hidden;
+            font-family: 'Playfair Display', serif;
         }
-        .video {
+
+        /* Fondo de noche mágica */
+        .background {
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            animation: fade 30s infinite;
+            background: radial-gradient(circle at center, #002222 0%, var(--oscuro) 100%);
+            z-index: 1;
         }
-        @keyframes fade {
-            0% { opacity: 1; }
-            20% { opacity: 1; }
-            25% { opacity: 0; }
-            45% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 1; }
-        }
-        .nav-buttons {
+
+        .stars {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3;
+            z-index: 2;
         }
-        .nav-buttons button {
-            background-color: turquoise;
-            color: gold;
-            border: none;
-            padding: 10px 20px;
+
+        /* Contenedor interactivo */
+        .envelope-wrapper {
+            position: relative;
             cursor: pointer;
-            font-size: 16px;
+            z-index: 10;
+            width: 320px;
+            height: 220px;
+            perspective: 1000px;
         }
+
+        /* La Carta Interior (Elegante) */
+        .card {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 300px;
+            height: 200px;
+            background: var(--pergamino);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png'); /* Textura árabe sutil */
+            z-index: 1;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s 0.4s ease;
+            padding: 25px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            color: #222;
+            border: 2px solid var(--dorado);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        /* El Sobre Frontal */
+        .envelope-front {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--turquesa);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            z-index: 3;
+            border: 2px solid var(--dorado);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            /* Forma del sobre cortado */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 55%, 100% 0);
+        }
+
+        /* La Solapa Superior */
+        .flap {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--turquesa-claro);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            z-index: 4;
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+            transform-origin: top;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 2px solid var(--dorado);
+        }
+
+        /* Borde dorado falso para la solapa */
+        .flap::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border-bottom: 2px solid var(--dorado);
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+        }
+
+        /* Sello de Joya */
+        .seal {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle, var(--dorado-brillante) 0%, var(--dorado) 100%);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 0 20px var(--turquesa-claro), inset 0 0 10px rgba(0,0,0,0.5);
+            transition: opacity 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seal::before {
+            content: '✨';
+            font-size: 20px;
+        }
+
+        /* --- ESTADOS AL ABRIR --- */
+        .envelope-wrapper.open .flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+        .envelope-wrapper.open .seal {
+            opacity: 0;
+        }
+        .envelope-wrapper.open .card {
+            transform: translateY(-240px);
+            height: 520px;
+            z-index: 5;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Tipografía y Diseño Interior */
+        h1 { font-family: 'Cinzel Decorative', cursive; color: var(--dorado); font-size: 1.6rem; margin: 0 0 10px 0; font-weight: bold; }
+        .name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; color: var(--turquesa); margin: 0 0 15px 0; }
+        p { font-size: 0.85rem; line-height: 1.5; margin: 8px 0; color: #444; }
+        
+        .divider {
+            width: 50px;
+            height: 2px;
+            background: var(--dorado);
+            margin: 15px auto;
+        }
+
+        .details { font-size: 0.8rem; line-height: 1.6; color: #111; margin-bottom: 20px; }
+        
+        .btn-container { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
+        .btn {
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            border: 1px solid var(--dorado);
+            text-transform: uppercase;
+        }
+        .btn-wa { background: linear-gradient(45deg, var(--turquesa), var(--turquesa-claro)); }
+        .btn-maps { background: var(--oscuro); }
+
+        .tap-instruction {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            text-align: center;
+            color: var(--dorado);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
-    <div class="video-container">
-        <video class="video" autoplay muted loop>
-            <source src="scene1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 30s;">
-            <source src="scene2.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 60s;">
-            <source src="scene3.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 90s;">
-            <source src="scene4.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 120s;">
-            <source src="scene5.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 150s;">
-            <source src="scene6.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 180s;">
-            <source src="scene7.mp4" type="video/mp4">
-        </video>
-        <video class="video" autoplay muted loop style="animation-delay: 210s;">
-            <source src="scene8.mp4" type="video/mp4">
-        </video>
-        <div class="nav-buttons">
-            <button onclick="prevScene()">Previous</button>
-            <button onclick="nextScene()">Next</button>
+    <div class="background"></div>
+    <div class="stars"></div>
+    
+    <div class="envelope-wrapper" onclick="this.classList.add('open')">
+        <div class="card">
+            <h1>Mis 15 Años</h1>
+            <div class="name">Jazmin</div>
+            
+            <p>"Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."</p>
+            <p>"Queremos invitarte a ser parte de esta noche mágica..."</p>
+            
+            <div class="divider"></div>
+            
+            <div class="details">
+                <strong>MARTES 18 DE AGOSTO - 21:00 HS</strong><br>
+                Salón de Eventos Coopejas<br>
+                <span style="color: #666;">J. Augusto Saldívar</span>
+            </div>
+            
+            <div class="btn-container">
+                <a href="https://wa.me/595982432818" class="btn btn-wa" onclick="event.stopPropagation()">Confirmar Asistencia</a>
+                <a href="Https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn btn-maps" target="_blank" onclick="event.stopPropagation()">Ver Ubicación</a>
+            </div>
         </div>
+        
+        <div class="envelope-front"></div>
+        <div class="flap">
+            <div class="seal"></div>
+        </div>
+        <div class="tap-instruction">TOCAR PARA ABRIR</div>
     </div>
-    <script>
-        let currentScene = 0;
-        const videos = document.querySelectorAll('.video');
-        function nextScene() {
-            videos[currentScene].style.opacity = '0';
-            currentScene = (currentScene + 1) % videos.length;
-            videos[currentScene].style.opacity = '1';
-        }
-        function prevScene() {
-            videos[currentScene].style.opacity = '0';
-            currentScene = (currentScene - 1 + videos.length) % videos.length;
-            videos[currentScene].style.opacity = '1';
-        }
-    </script>
 </body>
 </html>
