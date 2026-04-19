@@ -10,188 +10,102 @@
             --turquesa-real: #005f5f;
             --turquesa-luz: #008b8b;
             --oro-puro: #d4af37;
-            --oro-viejo: #aa8a2e;
             --fondo-noche: #020a0a;
             --papel: #fdfaf1;
         }
 
         body {
-            margin: 0;
-            background-color: var(--fondo-noche);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Prata', serif;
+            margin: 0; background-color: var(--fondo-noche);
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; font-family: 'Prata', serif;
         }
 
-        /* Partículas de polvo de oro */
         .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            position: absolute; width: 100%; height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.3;
-            z-index: 1;
+            opacity: 0.3; z-index: 1;
         }
 
         .envelope-wrapper {
-            position: relative;
-            cursor: pointer;
-            z-index: 10;
-            width: 320px;
-            height: 220px;
-            perspective: 1500px;
+            position: relative; cursor: pointer; z-index: 10;
+            width: 320px; height: 220px; perspective: 1500px;
         }
 
-        /* Sobre con textura de arabesco */
+        /* Sobre con textura Árabe */
         .envelope-front {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            position: absolute; width: 100%; height: 100%;
             background: var(--turquesa-real);
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            border: 2px solid var(--oro-puro);
-            z-index: 3;
+            border: 2px solid var(--oro-puro); z-index: 3;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 50%, 100% 0);
         }
 
         .flap {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            position: absolute; width: 100%; height: 100%;
             background: var(--turquesa-luz);
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            border-top: 2px solid var(--oro-puro);
-            z-index: 4;
+            border-top: 2px solid var(--oro-puro); z-index: 4;
             clip-path: polygon(0 0, 100% 0, 50% 50%);
-            transform-origin: top;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: top; transition: transform 0.7s ease;
         }
 
-        /* Sello de Cera Real */
         .seal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 55px;
-            height: 55px;
-            background: radial-gradient(circle, #f1d570 0%, var(--oro-puro) 100%);
-            border-radius: 50%;
-            z-index: 5;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 0 5px white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 0.3s;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 50px; height: 50px; background: radial-gradient(circle, #f1d570, var(--oro-puro));
+            border-radius: 50%; z-index: 5; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
         }
 
-        /* La Carta (Papel de Lujo) */
+        /* Carta de Lujo */
         .card {
-            position: absolute;
-            top: 5px;
-            left: 10px;
-            width: 300px;
-            height: 200px;
-            background: var(--papel);
-            z-index: 1;
+            position: absolute; top: 5px; left: 10px; width: 300px; height: 200px;
+            background: var(--papel); z-index: 1; border: 6px double var(--oro-puro);
             transition: transform 0.8s ease, height 0.8s 0.3s ease;
-            padding: 30px 20px;
-            box-sizing: border-box;
-            border: 8px double var(--oro-puro); /* Borde doble elegante */
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 25px 15px; box-sizing: border-box; text-align: center;
         }
 
-        /* Animación de apertura */
         .envelope-wrapper.open .flap { transform: rotateX(180deg); z-index: 0; }
         .envelope-wrapper.open .seal { opacity: 0; }
         .envelope-wrapper.open .card {
-            transform: translateY(-260px);
-            height: 540px;
-            z-index: 10;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+            transform: translateY(-280px); height: 560px; z-index: 10;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
         }
 
-        h1 { font-family: 'Cinzel Decorative', cursive; color: var(--oro-viejo); font-size: 1.4rem; margin: 0; }
-        .name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--turquesa-real); margin: 10px 0; font-style: italic; }
-        
-        .main-text { font-size: 0.85rem; line-height: 1.6; color: #333; margin: 10px 0; }
-        
-        .divider { width: 80%; height: 1px; background: linear-gradient(to right, transparent, var(--oro-puro), transparent); margin: 15px 0; }
+        h1 { font-family: 'Cinzel Decorative', cursive; color: #aa8a2e; font-size: 1.3rem; margin: 0; }
+        .name { font-family: 'Playfair Display', serif; font-size: 2.3rem; color: var(--turquesa-real); font-style: italic; margin: 5px 0; }
+        .main-text { font-size: 0.85rem; line-height: 1.5; color: #333; margin: 10px 0; }
+        .divider { width: 60%; height: 1px; background: var(--oro-puro); margin: 15px auto; }
+        .dress-code { font-weight: bold; color: #aa8a2e; text-transform: uppercase; letter-spacing: 1px; margin: 15px 0; font-size: 0.8rem; }
 
-        .details { font-size: 0.9rem; color: #000; line-height: 1.5; }
-        .dress-code { margin-top: 15px; font-weight: bold; color: var(--oro-viejo); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        .btn-container { width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
         .btn {
-            padding: 12px;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: 1px solid var(--oro-puro);
-            transition: 0.3s;
+            display: block; width: 100%; padding: 12px; margin-top: 10px;
+            color: white; text-decoration: none; border-radius: 4px;
+            font-size: 0.75rem; font-weight: bold; border: 1px solid var(--oro-puro);
         }
-        .btn-wa { background: var(--turquesa-real); }
-        .btn-maps { background: #111; }
-
-        .tap-msg {
-            position: absolute;
-            bottom: -50px;
-            width: 100%;
-            text-align: center;
-            color: var(--oro-puro);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            animation: breathe 2s infinite;
-        }
-        @keyframes breathe { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
     <div class="stars"></div>
-
     <div class="envelope-wrapper" onclick="this.classList.add('open')">
         <div class="card">
             <h1>Mis 15 Años</h1>
             <div class="name">Jazmin</div>
-            
             <div class="main-text">
-                "Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."<br><br>
-                "Queremos invitarte a ser parte de esta noche mágica..."
+                "Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."
             </div>
-
             <div class="divider"></div>
-
-            <div class="details">
+            <div style="font-size: 0.9rem;">
                 <strong>MARTES 18 DE AGOSTO - 21:00 HS</strong><br>
                 Salón de Eventos Coopejas<br>
                 J. Augusto Saldívar
             </div>
-
-            <div class="dress-code">
-                Vestimenta: Sport elegante
-            </div>
-
-            <div class="btn-container">
-                <a href="https://wa.me/595982432818" class="btn btn-wa" onclick="event.stopPropagation()">Confirmar Asistencia</a>
-                <a href="https://maps.app.goo.gl/tu-link-aqui" class="btn btn-maps" target="_blank" onclick="event.stopPropagation()">Ver Ubicación</a>
-            </div>
+            <div class="dress-code">VESTIMENTA: SPORT ELEGANTE</div>
+            <a href="https://wa.me/595982432818" class="btn" style="background: var(--turquesa-real);">CONFIRMAR ASISTENCIA</a>
+            <a href="Https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn" style="background: #111;">VER UBICACIÓN</a>
         </div>
-
         <div class="envelope-front"></div>
-        <div class="flap">
-            <div class="seal"><span>✨</span></div>
-        </div>
-        <div class="tap-msg">TOCAR PARA ABRIR</div>
+        <div class="flap"><div class="seal">✨</div></div>
     </div>
 </body>
 </html>
