@@ -18,7 +18,7 @@
 
         body {
             height: 100vh;
-            background: var(--noche);
+            background: linear-gradient(#1a2538, #0f1829);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,76 +27,77 @@
             position: relative;
         }
 
-        .background {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, #1a2538, #0f1829);
-            z-index: 1;
-        }
-
-        .dust {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(232,197,110,0.12) 1px, transparent 2px);
-            background-size: 50px 50px;
-            opacity: 0.6;
-            z-index: 2;
-        }
-
-        .envelope-wrapper {
+        .scene {
             position: relative;
-            width: min(92vw, 340px);
-            height: 290px;
-            perspective: 2400px;
-            cursor: pointer;
+            width: min(92vw, 360px);
+            height: 520px;
             z-index: 10;
         }
 
-        /* Sobre cerrado con filigrana */
-        .envelope-front {
+        /* Fondo terciopelo con polvo de estrellas */
+        .background {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: var(--turquesa);
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            background-size: 170px;
-            border: 8px solid var(--oro);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            z-index: 3;
+            inset: 0;
+            background: #0f1829;
+            box-shadow: inset 0 0 80px rgba(232,197,110,0.15);
+            z-index: 1;
         }
 
-        /* Solapa cerrada con zafiro y sello de cera */
-        .flap {
+        .stars {
             position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 2px);
+            background-size: 40px 40px;
+            opacity: 0.7;
+            z-index: 2;
+        }
+
+        /* Sobre Cerrado (Izquierda) */
+        .envelope-closed {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            width: 100%;
+            height: 280px;
+            background: var(--turquesa);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            border: 8px solid var(--oro);
+            border-radius: 12px 12px 6px 6px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.85);
+            z-index: 5;
+            transition: all 1.2s ease;
+        }
+
+        /* Solapa cerrada con zafiro y sello */
+        .flap-closed {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(#00d4c0, var(--turquesa));
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
             border-top: 8px solid var(--oro);
-            z-index: 7;
             clip-path: polygon(0 0, 100% 0, 50% 48%);
-            transform-origin: top;
-            transition: transform 1.8s cubic-bezier(0.65, 0.05, 0.2, 1);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.75);
+            z-index: 6;
         }
 
         .jewel {
             position: absolute;
-            top: 42%;
+            top: 38%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 88px;
-            height: 88px;
+            width: 92px;
+            height: 92px;
             background: radial-gradient(circle at 35% 35%, #a0d8ff, #0066cc 40%, #003366);
-            border: 6px solid var(--oro);
+            border: 7px solid var(--oro);
             border-radius: 50%;
-            z-index: 8;
-            box-shadow: 0 0 35px rgba(160,216,255,0.9), inset 0 0 25px rgba(255,255,255,0.7);
+            box-shadow: 0 0 40px rgba(160,216,255,0.95), inset 0 0 25px rgba(255,255,255,0.8);
+            z-index: 7;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 1.9rem;
+            justify-content: center;
+            font-size: 2.1rem;
         }
 
         .wax-seal {
@@ -104,122 +105,109 @@
             top: 68%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 52px;
-            height: 52px;
+            width: 54px;
+            height: 54px;
             background: #d4af37;
-            border: 3px solid #b38b2e;
+            border: 4px solid #b38b2e;
             border-radius: 50%;
-            z-index: 9;
+            z-index: 8;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-family: 'Cinzel Decorative', cursive;
             color: #3d2a00;
-            font-size: 1.4rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            font-size: 1.45rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
         }
 
         .envelope-text {
             position: absolute;
-            bottom: 22%;
+            bottom: 18%;
             left: 50%;
             transform: translateX(-50%);
             color: var(--oro);
-            font-size: 0.72rem;
-            letter-spacing: 2px;
+            font-size: 0.73rem;
+            letter-spacing: 2.5px;
             font-weight: bold;
             text-align: center;
-            z-index: 8;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            z-index: 7;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
         }
 
         /* Botón para abrir */
         .open-btn {
             position: absolute;
-            bottom: -70px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 14px 28px;
+            padding: 16px 32px;
             background: linear-gradient(135deg, var(--turquesa), var(--turquesa-oscuro));
             color: white;
-            border: 2px solid var(--oro);
-            border-radius: 30px;
+            border: 3px solid var(--oro);
+            border-radius: 50px;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 1rem;
             cursor: pointer;
             z-index: 20;
-            box-shadow: 0 8px 20px rgba(0,180,168,0.4);
-            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,180,168,0.5);
             white-space: nowrap;
         }
 
-        .open-btn:hover {
-            transform: translateX(-50%) scale(1.08);
-            box-shadow: 0 12px 30px rgba(232,197,110,0.5);
-        }
-
-        /* Efecto de humo mágico */
+        /* Humo mágico */
         .smoke {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0,180,168,0.6), transparent 70%);
-            opacity: 0;
-            pointer-events: none;
-            z-index: 15;
-            transition: opacity 1.2s ease;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(0,220,200,0.75), transparent 70%);
             border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            pointer-events: none;
+            transition: all 1.8s ease;
         }
 
-        /* Tarjeta */
+        /* Tarjeta que aparece al abrir */
         .card {
             position: absolute;
-            top: 24px;
-            left: 16px;
-            width: calc(100% - 32px);
-            height: 225px;
+            top: 80px;
+            left: 20px;
+            width: calc(100% - 40px);
+            height: 380px;
             background: var(--papel);
-            border: 4px solid var(--oro);
+            border: 5px solid var(--oro);
             border-radius: 12px;
-            padding: 30px 24px;
+            padding: 32px 26px;
             text-align: center;
             overflow-y: auto;
-            transition: all 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
-            z-index: 5;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.92);
             opacity: 0;
-        }
-
-        .envelope-wrapper.open .flap { 
-            transform: rotateX(188deg); 
-            z-index: 2;
-        }
-        .envelope-wrapper.open .jewel,
-        .envelope-wrapper.open .wax-seal { 
-            opacity: 0; 
-            transform: translate(-50%, -280%) scale(0.4);
-        }
-        .envelope-wrapper.open .card {
-            transform: translateY(-255px);
-            height: 590px;
+            transform: translateY(40px);
+            transition: all 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
             z-index: 12;
-            opacity: 1;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
 
-        /* Contenido tarjeta */
+        .envelope-wrapper.open .card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contenido de la tarjeta */
         .subtitle { font-size: 0.78rem; letter-spacing: 3.5px; color: var(--oro); margin-bottom: 8px; }
-        h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.48rem; color: var(--turquesa-oscuro); margin-bottom: 10px; }
-        .name { font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--turquesa); margin: 12px 0 20px; }
-        .main-text { font-size: 0.93rem; line-height: 1.62; color: #333; margin: 18px 0; }
-        .divider { width: 85px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 22px auto; }
-        .info { font-size: 0.97rem; line-height: 1.48; color: #222; margin-bottom: 18px; }
-        .dress-code { font-size: 0.84rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 1.5px; margin: 20px 0 24px; }
+        h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.45rem; color: var(--turquesa-oscuro); margin-bottom: 10px; }
+        .name { font-family: 'Great Vibes', cursive; font-size: 3.1rem; color: var(--turquesa); margin: 12px 0 18px; }
+        .main-text { font-size: 0.92rem; line-height: 1.6; color: #333; margin: 16px 0; }
+        .divider { width: 80px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 20px auto; }
+        .info { font-size: 0.96rem; line-height: 1.45; color: #222; margin-bottom: 16px; }
+        .dress-code { font-size: 0.84rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 1.5px; margin: 18px 0 22px; }
 
         .confirm-text {
             font-size: 0.9rem;
             color: var(--turquesa-oscuro);
             font-weight: bold;
-            margin: 12px 0 8px;
+            margin: 12px 0 10px;
         }
 
         .btn {
@@ -234,20 +222,27 @@
             border-radius: 8px;
             background: linear-gradient(135deg, var(--turquesa-oscuro), var(--turquesa));
             border: 2px solid var(--oro);
-            transition: all 0.4s;
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(232,197,110,0.5); }
     </style>
 </head>
 <body>
 
     <div class="background"></div>
-    <div class="dust"></div>
+    <div class="stars"></div>
 
-    <div class="envelope-wrapper" id="envelope">
-        
-        <!-- Tarjeta -->
-        <div class="card">
+    <div class="scene" id="scene">
+
+        <!-- Sobre Cerrado -->
+        <div class="envelope-closed" id="envelopeClosed">
+            <div class="flap-closed">
+                <div class="jewel">💎</div>
+                <div class="wax-seal">🪔</div>
+                <div class="envelope-text">UNA NOCHE DE ENSUEÑO<br>EN AGRABAH</div>
+            </div>
+        </div>
+
+        <!-- Tarjeta que aparece al abrir -->
+        <div class="card" id="card">
             <div class="subtitle">UNA NOCHE DE ENSUEÑO EN AGRABAH</div>
             <h1>MIS 15 AÑOS</h1>
             <div class="name">Jazmin</div>
@@ -275,44 +270,38 @@
             <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
         </div>
 
-        <!-- Sobre cerrado -->
-        <div class="envelope-front"></div>
-        
-        <!-- Solapa con joya y sello -->
-        <div class="flap" id="flap">
-            <div class="jewel">💎</div>
-            <div class="wax-seal">🪔</div>
-            <div class="envelope-text">UNA NOCHE DE ENSUEÑO<br>EN AGRABAH</div>
-        </div>
+        <!-- Humo mágico -->
+        <div class="smoke" id="smoke"></div>
 
         <!-- Botón para abrir -->
         <button class="open-btn" id="openBtn">✨ HAZ CLIC AQUÍ PARA ABRIR EL SOBRE ✨</button>
-
-        <!-- Efecto de humo -->
-        <div class="smoke" id="smoke"></div>
     </div>
 
     <script>
-        const envelope = document.getElementById('envelope');
         const openBtn = document.getElementById('openBtn');
         const smoke = document.getElementById('smoke');
-        const flap = document.getElementById('flap');
+        const card = document.getElementById('card');
+        const envelopeClosed = document.getElementById('envelopeClosed');
 
         openBtn.addEventListener('click', () => {
             // Mostrar humo mágico
-            smoke.style.opacity = '0.85';
-            
-            // Animación del humo desapareciendo
-            setTimeout(() => {
-                smoke.style.transition = 'opacity 1.8s ease';
-                smoke.style.opacity = '0';
-            }, 800);
+            smoke.style.opacity = '0.9';
+            smoke.style.transform = 'translate(-50%, -80%) scale(1.4)';
 
-            // Abrir el sobre después de un pequeño delay
             setTimeout(() => {
-                envelope.classList.add('open');
-                openBtn.style.display = 'none'; // Ocultar botón después de abrir
-            }, 1200);
+                smoke.style.transition = 'opacity 2s ease, transform 2s ease';
+                smoke.style.opacity = '0';
+                smoke.style.transform = 'translate(-50%, -120%) scale(0.6)';
+            }, 600);
+
+            // Abrir el sobre
+            setTimeout(() => {
+                envelopeClosed.style.opacity = '0.3';
+                envelopeClosed.style.transform = 'translateY(-30px) scale(0.95)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                openBtn.style.display = 'none';
+            }, 1400);
         });
     </script>
 </body>
