@@ -1,68 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Invitation</title>
+    <title>Noche Real de Quince</title>
     <style>
         body {
-            background-image: url('linen_texture.jpg');
-            font-family: 'Georgia', serif;
-            color: #333;
+            background: url('velvet_night_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Refined Typography', serif;
         }
         .envelope {
-            background-image: url('envelope_texture.jpg');
-            border: 1px solid #ccc;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
+            border: 5px solid gold;
+            background-color: turquoise;
+            animation: smoothAnimation 2s;
         }
         .seal {
-            background-image: url('3d_wax_seal.jpg');
+            background: url('wax_seal_magic_lamp.png') no-repeat center;
             width: 50px;
             height: 50px;
-            position: absolute;
-            top: 10px;
-            right: 10px;
+            animation: smoothAnimation 2s;
         }
-        .parchment {
-            background-color: #f5f5dc;
-            border: 2px solid #8b4513;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        .card {
+            background: url('aged_parchment.jpg') no-repeat;
+            border: 2px solid filigree; 
+            animation: smoothAnimation 2s;
+        }
+        @keyframes smoothAnimation {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .dress-code {
-            font-weight: bold;
-            color: #ff4500;
-        }
-        .buttons {
-            background-color: #40e0d0;
-            border: 1px solid #696969;
-            border-radius: 5px;
-            padding: 10px;
-            color: white;
-        }
-        .magic {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+            color: metallic_turquoise;
         }
     </style>
 </head>
 <body>
     <div class="envelope">
+        <h1>Noche Real de Quince</h1>
         <div class="seal"></div>
-        <h1>You're Invited!</h1>
-        <div class="parchment">
-            <p>Dear Guest,</p>
-            <p>We are pleased to invite you to a special event.</p>
-            <p class="dress-code">Dress Code: Elegant Attire</p>
+        <div class="card">
+            <p>Dress Code: <span class="dress-code">Sport Elegante</span></p>
         </div>
-        <div class="buttons">
-            <p>RSVP</p>
-            <p>Contact: info@example.com</p>
-        </div>
-        <div class="magic">✨</div>
+        <button style="background-color: metallic_turquoise;">RSVP</button>
+        <button style="background-color: polished_onyx;">More Info</button>
     </div>
+    <script>
+        // Add smooth animations
+    </script>
 </body>
 </html>
