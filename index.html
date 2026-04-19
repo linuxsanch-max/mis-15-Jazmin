@@ -27,157 +27,175 @@
             position: relative;
         }
 
-        /* Fondo mágico inspirado en Agrabah */
+        /* Fondo elegante con terciopelo y polvo dorado */
         .background {
             position: absolute;
             inset: 0;
-            background: 
-                linear-gradient(to bottom, #1a2a4a 0%, #0f1b35 100%),
-                url('https://picsum.photos/id/1015/800/1200') center/cover; /* Palacio de noche con minaretes */
-            filter: brightness(0.85) contrast(1.1);
+            background: linear-gradient(to bottom, #1a2538, #0f1829);
             z-index: 1;
         }
 
-        /* Luces de faroles árabes */
-        .lanterns {
+        .dust {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 20% 40%, rgba(255,220,100,0.25), transparent 40%),
-                        radial-gradient(circle at 75% 55%, rgba(255,180,100,0.2), transparent 50%);
+            background: radial-gradient(circle, rgba(232,197,110,0.12) 1px, transparent 2px);
+            background-size: 50px 50px;
+            opacity: 0.6;
             z-index: 2;
-            pointer-events: none;
         }
 
         .envelope-wrapper {
             position: relative;
             width: min(92vw, 340px);
-            height: 280px;
-            perspective: 2200px;
+            height: 290px;
+            perspective: 2400px;
             cursor: pointer;
             z-index: 10;
         }
 
-        /* Sobre turquesa lujoso con filigrana */
+        /* Sobre turquesa con filigrana */
         .envelope-front {
             position: absolute;
             width: 100%;
             height: 100%;
             background: var(--turquesa);
-            background-image: 
-                linear-gradient(rgba(232,197,110,0.15), rgba(232,197,110,0.15)),
-                url('https://www.transparenttextures.com/patterns/arabesque.png');
-            background-size: cover, 180px;
-            border: 7px solid var(--oro);
-            box-shadow: 0 35px 70px rgba(0,0,0,0.85);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            background-size: 170px;
+            border: 8px solid var(--oro);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.9);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             z-index: 3;
         }
 
-        /* Flap con textura seda */
+        /* Solapa (flap) con borde ornamental y zafiro central */
         .flap {
             position: absolute;
             width: 100%;
             height: 100%;
             background: linear-gradient(#00d4c0, var(--turquesa));
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            border-top: 7px solid var(--oro);
-            z-index: 6;
-            clip-path: polygon(0 0, 100% 0, 50% 50%);
+            border-top: 8px solid var(--oro);
+            z-index: 7;
+            clip-path: polygon(0 0, 100% 0, 50% 48%);
             transform-origin: top;
-            transition: transform 1.5s cubic-bezier(0.6, 0.05, 0.15, 1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            transition: transform 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.75);
         }
 
-        /* Gran zafiro central con diamantes (joya principal) */
-        .seal {
+        /* Adorno central: Gran Zafiro + filigrana */
+        .jewel {
             position: absolute;
-            top: 48%;
+            top: 42%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 82px;
-            height: 82px;
-            background: radial-gradient(circle at 40% 40%, #ffffff, #4a9eff 30%, #003366);
-            border: 5px solid var(--oro);
+            width: 88px;
+            height: 88px;
+            background: radial-gradient(circle at 35% 35%, #a0d8ff, #0066cc 40%, #003366);
+            border: 6px solid var(--oro);
             border-radius: 50%;
-            z-index: 7;
+            z-index: 8;
+            box-shadow: 0 0 35px rgba(160,216,255,0.9),
+                        inset 0 0 25px rgba(255,255,255,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.9rem;
+        }
+
+        /* Sello de cera dorado con lámpara y "J" */
+        .wax-seal {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: #d4af37;
+            border: 3px solid #b38b2e;
+            border-radius: 50%;
+            z-index: 9;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 1.8rem;
-            color: #fff;
-            box-shadow: 
-                0 0 30px rgba(74,158,255,0.9),
-                inset 0 0 20px rgba(255,255,255,0.6);
-            transition: all 0.8s ease;
+            color: #3d2a00;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        /* Texto exterior en la solapa */
+        .envelope-text {
+            position: absolute;
+            bottom: 22%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--oro);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 8;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Tarjeta */
         .card {
             position: absolute;
-            top: 22px;
-            left: 14px;
-            width: calc(100% - 28px);
-            height: 220px;
+            top: 24px;
+            left: 16px;
+            width: calc(100% - 32px);
+            height: 225px;
             background: var(--papel);
             border: 4px solid var(--oro);
             border-radius: 12px;
-            padding: 28px 22px;
+            padding: 30px 24px;
             text-align: center;
             overflow-y: auto;
-            transition: all 1.5s cubic-bezier(0.6, 0.05, 0.15, 1);
+            transition: all 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
             z-index: 5;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.92);
         }
 
-        /* Animación corregida */
+        /* Animación corregida - la tarjeta sale al frente */
         .envelope-wrapper.open .flap { 
-            transform: rotateX(185deg); 
+            transform: rotateX(188deg); 
             z-index: 2;
         }
-        .envelope-wrapper.open .seal { 
-            transform: translate(-50%, -220%) scale(0.55); 
+        .envelope-wrapper.open .jewel,
+        .envelope-wrapper.open .wax-seal { 
             opacity: 0; 
+            transform: translate(-50%, -280%) scale(0.4);
         }
         .envelope-wrapper.open .card {
-            transform: translateY(-245px);
-            height: 570px;
-            z-index: 10;
-            box-shadow: 0 45px 100px rgba(0,0,0,0.95);
+            transform: translateY(-255px);
+            height: 590px;
+            z-index: 12;   /* Ahora está claramente al frente */
         }
 
-        /* Contenido tarjeta */
-        .subtitle { font-size: 0.78rem; letter-spacing: 4px; color: var(--oro); margin-bottom: 6px; }
-        h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.45rem; color: var(--turquesa-oscuro); margin-bottom: 8px; }
-        .name { font-family: 'Great Vibes', cursive; font-size: 3.1rem; color: var(--turquesa); margin: 10px 0 18px; text-shadow: 0 0 15px rgba(0,180,168,0.4); }
-        .main-text { font-size: 0.92rem; line-height: 1.6; color: #333; margin: 18px 0; }
-        .divider { width: 80px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 20px auto; }
-        .info { font-size: 0.98rem; line-height: 1.45; color: #222; }
-        .dress-code { font-size: 0.85rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 2px; margin: 22px 0 26px; }
+        /* Contenido de la tarjeta */
+        .subtitle { font-size: 0.78rem; letter-spacing: 3.5px; color: var(--oro); margin-bottom: 8px; }
+        h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.48rem; color: var(--turquesa-oscuro); margin-bottom: 10px; }
+        .name { font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--turquesa); margin: 12px 0 20px; }
+        .main-text { font-size: 0.93rem; line-height: 1.62; color: #333; margin: 18px 0; }
+        .divider { width: 85px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 22px auto; }
+        .info { font-size: 0.97rem; line-height: 1.48; color: #222; }
+        .dress-code { font-size: 0.84rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 1.5px; margin: 24px 0 28px; }
 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 9px 0;
-            color: white;
-            text-decoration: none;
+        .confirm-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--turquesa-oscuro);
             font-weight: bold;
-            font-size: 0.88rem;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--turquesa-oscuro), var(--turquesa));
-            border: 2px solid var(--oro);
-            transition: all 0.4s;
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(232,197,110,0.5); }
     </style>
 </head>
 <body>
 
     <div class="background"></div>
-    <div class="lanterns"></div>
+    <div class="dust"></div>
 
     <div class="envelope-wrapper" onclick="this.classList.add('open')">
+        
         <!-- Tarjeta -->
         <div class="card">
             <div class="subtitle">UNA NOCHE DE ENSUEÑO EN AGRABAH</div>
@@ -198,16 +216,20 @@
 
             <div class="dress-code">VESTIMENTA: SPORT ELEGANTE</div>
 
-            <a href="https://wa.me/595982432818" class="btn">CONFIRMAR ASISTENCIA</a>
-            <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
+            <div class="confirm-text">
+                Confirma tu asistencia en:<br>
+                <strong>linuxsanch-max.github.io/mis-15-Jazmin</strong>
+            </div>
         </div>
 
-        <!-- Sobre lujoso -->
+        <!-- Sobre -->
         <div class="envelope-front"></div>
         
-        <!-- Flap -->
+        <!-- Solapa con zafiro y sello de cera -->
         <div class="flap">
-            <div class="seal">💎</div>
+            <div class="jewel">💎</div>
+            <div class="wax-seal">🪔</div>
+            <div class="envelope-text">UNA NOCHE DE ENSUEÑO<br>EN AGRABAH</div>
         </div>
     </div>
 
