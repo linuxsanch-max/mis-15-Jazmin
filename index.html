@@ -27,111 +27,129 @@
             position: relative;
         }
 
+        /* Fondo mágico inspirado en Agrabah */
         .background {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(0,180,168,0.18), transparent 70%),
-                        radial-gradient(circle at 20% 80%, rgba(232,197,110,0.15), transparent);
+            background: 
+                linear-gradient(to bottom, #1a2a4a 0%, #0f1b35 100%),
+                url('https://picsum.photos/id/1015/800/1200') center/cover; /* Palacio de noche con minaretes */
+            filter: brightness(0.85) contrast(1.1);
             z-index: 1;
+        }
+
+        /* Luces de faroles árabes */
+        .lanterns {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 40%, rgba(255,220,100,0.25), transparent 40%),
+                        radial-gradient(circle at 75% 55%, rgba(255,180,100,0.2), transparent 50%);
+            z-index: 2;
+            pointer-events: none;
         }
 
         .envelope-wrapper {
             position: relative;
             width: min(92vw, 340px);
-            height: 270px;
-            perspective: 2000px;
+            height: 280px;
+            perspective: 2200px;
             cursor: pointer;
             z-index: 10;
         }
 
-        /* Sobre trasero */
+        /* Sobre turquesa lujoso con filigrana */
         .envelope-front {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: var(--turquesa-oscuro);
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            border: 6px solid var(--oro);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+            background: var(--turquesa);
+            background-image: 
+                linear-gradient(rgba(232,197,110,0.15), rgba(232,197,110,0.15)),
+                url('https://www.transparenttextures.com/patterns/arabesque.png');
+            background-size: cover, 180px;
+            border: 7px solid var(--oro);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.85);
             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             z-index: 3;
         }
 
-        /* Flap del sobre */
+        /* Flap con textura seda */
         .flap {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: var(--turquesa);
+            background: linear-gradient(#00d4c0, var(--turquesa));
             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            border-top: 6px solid var(--oro);
-            z-index: 5;                    /* Más alto que el sobre */
-            clip-path: polygon(0 0, 100% 0, 50% 52%);
+            border-top: 7px solid var(--oro);
+            z-index: 6;
+            clip-path: polygon(0 0, 100% 0, 50% 50%);
             transform-origin: top;
-            transition: transform 1.4s cubic-bezier(0.55, 0, 0.1, 1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            transition: transform 1.5s cubic-bezier(0.6, 0.05, 0.15, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
         }
 
-        /* Sello */
+        /* Gran zafiro central con diamantes (joya principal) */
         .seal {
             position: absolute;
             top: 48%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 78px;
-            height: 78px;
-            background: radial-gradient(circle, #f8e8b8, var(--oro));
-            border: 4px solid var(--oro);
+            width: 82px;
+            height: 82px;
+            background: radial-gradient(circle at 40% 40%, #ffffff, #4a9eff 30%, #003366);
+            border: 5px solid var(--oro);
             border-radius: 50%;
-            z-index: 6;
+            z-index: 7;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 2rem;
-            color: #3d2a00;
-            box-shadow: 0 0 25px rgba(232,197,110,0.8);
-            transition: all 0.7s ease;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 
+                0 0 30px rgba(74,158,255,0.9),
+                inset 0 0 20px rgba(255,255,255,0.6);
+            transition: all 0.8s ease;
         }
 
-        /* Tarjeta (la parte importante) */
+        /* Tarjeta */
         .card {
             position: absolute;
-            top: 20px;
+            top: 22px;
             left: 14px;
             width: calc(100% - 28px);
-            height: 215px;
+            height: 220px;
             background: var(--papel);
             border: 4px solid var(--oro);
             border-radius: 12px;
             padding: 28px 22px;
             text-align: center;
             overflow-y: auto;
-            transition: all 1.4s cubic-bezier(0.55, 0, 0.1, 1);
-            z-index: 4;                    /* Importante: entre el sobre y el flap */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.85);
+            transition: all 1.5s cubic-bezier(0.6, 0.05, 0.15, 1);
+            z-index: 5;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
         }
 
-        /* Animación al abrir */
+        /* Animación corregida */
         .envelope-wrapper.open .flap { 
-            transform: rotateX(182deg); 
-            z-index: 2;   /* Baja el flap para que la tarjeta quede visible */
+            transform: rotateX(185deg); 
+            z-index: 2;
         }
         .envelope-wrapper.open .seal { 
-            transform: translate(-50%, -200%) scale(0.5); 
+            transform: translate(-50%, -220%) scale(0.55); 
             opacity: 0; 
         }
         .envelope-wrapper.open .card {
-            transform: translateY(-235px);
-            height: 560px;
-            z-index: 10;   /* La tarjeta ahora queda claramente al frente */
-            box-shadow: 0 40px 90px rgba(0,0,0,0.9);
+            transform: translateY(-245px);
+            height: 570px;
+            z-index: 10;
+            box-shadow: 0 45px 100px rgba(0,0,0,0.95);
         }
 
-        /* Contenido de la tarjeta */
+        /* Contenido tarjeta */
         .subtitle { font-size: 0.78rem; letter-spacing: 4px; color: var(--oro); margin-bottom: 6px; }
         h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.45rem; color: var(--turquesa-oscuro); margin-bottom: 8px; }
-        .name { font-family: 'Great Vibes', cursive; font-size: 3.1rem; color: var(--turquesa); margin: 10px 0 18px; text-shadow: 0 0 15px rgba(0,180,168,0.3); }
+        .name { font-family: 'Great Vibes', cursive; font-size: 3.1rem; color: var(--turquesa); margin: 10px 0 18px; text-shadow: 0 0 15px rgba(0,180,168,0.4); }
         .main-text { font-size: 0.92rem; line-height: 1.6; color: #333; margin: 18px 0; }
         .divider { width: 80px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 20px auto; }
         .info { font-size: 0.98rem; line-height: 1.45; color: #222; }
@@ -157,6 +175,7 @@
 <body>
 
     <div class="background"></div>
+    <div class="lanterns"></div>
 
     <div class="envelope-wrapper" onclick="this.classList.add('open')">
         <!-- Tarjeta -->
@@ -183,12 +202,12 @@
             <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
         </div>
 
-        <!-- Sobre trasero -->
+        <!-- Sobre lujoso -->
         <div class="envelope-front"></div>
         
         <!-- Flap -->
         <div class="flap">
-            <div class="seal">✨ J ✨</div>
+            <div class="seal">💎</div>
         </div>
     </div>
 
