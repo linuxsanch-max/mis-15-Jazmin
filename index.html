@@ -10,10 +10,8 @@
 <style>
 :root {
     --turquesa-real: #004e4e;
-    --turquesa-profundo: #003838;
     --turquesa-luz: #0aa3a3;
     --oro-puro: #d4af37;
-    --oro-suave: #e6c766;
     --fondo-noche: #010606;
     --papel: #fffaf0;
 }
@@ -29,7 +27,7 @@ body {
     font-family: 'Prata', serif;
 }
 
-/* Fondo mágico */
+/* Fondo elegante */
 .stars {
     position: absolute;
     width: 100%;
@@ -37,17 +35,16 @@ body {
     background: radial-gradient(circle at 20% 30%, rgba(10,163,163,0.15), transparent 40%),
                 radial-gradient(circle at 80% 70%, rgba(212,175,55,0.15), transparent 40%),
                 #010606;
-    z-index: 1;
 }
 
 /* SOBRE */
 .envelope-wrapper {
     position: relative;
     cursor: pointer;
-    z-index: 10;
     width: 320px;
     height: 220px;
     perspective: 1500px;
+    z-index: 10;
 }
 
 .envelope-front {
@@ -85,7 +82,6 @@ body {
     background: radial-gradient(circle, #f1d570, var(--oro-puro));
     border-radius: 50%;
     z-index: 5;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,17 +98,19 @@ body {
     width: 300px;
     height: 200px;
     background: var(--papel);
-    z-index: 1;
     border: 2px solid var(--oro-puro);
     border-radius: 6px;
-    transition: transform 0.8s ease, height 0.8s 0.3s ease;
-    padding: 25px 15px;
+    padding: 20px 15px;
     box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
+    overflow-y: auto;
+    transition: transform 0.8s ease, height 0.8s ease;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-/* marco interno elegante */
+/* marco interno */
 .card::before {
     content: "";
     position: absolute;
@@ -121,6 +119,14 @@ body {
     pointer-events: none;
 }
 
+/* CONTENIDO FLEX */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ANIMACIÓN */
 .envelope-wrapper.open .flap {
     transform: rotateX(180deg);
     z-index: 0;
@@ -131,41 +137,38 @@ body {
 }
 
 .envelope-wrapper.open .card {
-    transform: translateY(-280px);
-    height: 560px;
+    transform: translateY(-180px);
+    height: 480px;
     z-index: 10;
     box-shadow: 0 20px 80px rgba(0,0,0,0.8);
 }
 
 /* TEXTOS */
-h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    color: #aa8a2e;
-    font-size: 1.2rem;
-    margin: 0;
-}
-
 .subtitle {
     font-size: 0.7rem;
     letter-spacing: 2px;
     color: #aa8a2e;
-    margin-bottom: 5px;
+}
+
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    color: #aa8a2e;
+    font-size: 1.2rem;
+    margin: 5px 0;
 }
 
 .name {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     color: var(--turquesa-real);
     font-style: italic;
     margin: 5px 0;
-    letter-spacing: 1px;
     text-shadow: 0 0 10px rgba(10,163,163,0.3);
 }
 
 .main-text {
     font-size: 0.85rem;
     line-height: 1.5;
-    color: #333;
     margin: 10px 0;
 }
 
@@ -173,24 +176,31 @@ h1 {
     width: 60%;
     height: 1px;
     background: var(--oro-puro);
-    margin: 15px auto;
+    margin: 10px auto;
+}
+
+.info {
+    font-size: 0.9rem;
 }
 
 .dress-code {
     font-weight: bold;
     color: #aa8a2e;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 15px 0;
+    margin: 10px 0;
     font-size: 0.8rem;
 }
 
 /* BOTONES */
+.buttons {
+    margin-top: auto;
+}
+
 .btn {
     display: block;
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 8px;
     color: white;
     text-decoration: none;
     border-radius: 4px;
@@ -203,7 +213,14 @@ h1 {
 
 .btn:hover {
     transform: scale(1.05);
-    background: linear-gradient(135deg, var(--turquesa-luz), var(--turquesa-real));
+}
+
+/* SCROLL FINO */
+.card::-webkit-scrollbar {
+    width: 4px;
+}
+.card::-webkit-scrollbar-thumb {
+    background: var(--oro-puro);
 }
 </style>
 </head>
@@ -215,27 +232,33 @@ h1 {
 <div class="envelope-wrapper" onclick="this.classList.add('open')">
 
     <div class="card">
-        <div class="subtitle">UNA NOCHE DE ENSUEÑO</div>
-        <h1>Mis 15 Años</h1>
+        <div class="card-content">
 
-        <div class="name">Jazmin</div>
+            <div class="subtitle">UNA NOCHE DE ENSUEÑO</div>
+            <h1>Mis 15 Años</h1>
 
-        <div class="main-text">
-            "Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."
+            <div class="name">Jazmin</div>
+
+            <div class="main-text">
+                "Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="info">
+                <strong>MARTES 18 DE AGOSTO - 21:00 HS</strong><br>
+                Salón de Eventos Coopejas<br>
+                J. Augusto Saldívar
+            </div>
+
+            <div class="dress-code">VESTIMENTA: SPORT ELEGANTE</div>
+
+            <div class="buttons">
+                <a href="https://wa.me/595982432818" class="btn">CONFIRMAR ASISTENCIA</a>
+                <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
+            </div>
+
         </div>
-
-        <div class="divider"></div>
-
-        <div style="font-size: 0.9rem;">
-            <strong>MARTES 18 DE AGOSTO - 21:00 HS</strong><br>
-            Salón de Eventos Coopejas<br>
-            J. Augusto Saldívar
-        </div>
-
-        <div class="dress-code">VESTIMENTA: SPORT ELEGANTE</div>
-
-        <a href="https://wa.me/595982432818" class="btn">CONFIRMAR ASISTENCIA</a>
-        <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
     </div>
 
     <div class="envelope-front"></div>
