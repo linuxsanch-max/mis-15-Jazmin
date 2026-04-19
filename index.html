@@ -1,49 +1,197 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>Noche Real de Quince</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 Años - Jazmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&family=Prata&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --turquesa-real: #005f5f;
+            --turquesa-luz: #008b8b;
+            --oro-puro: #d4af37;
+            --oro-viejo: #aa8a2e;
+            --fondo-noche: #020a0a;
+            --papel: #fdfaf1;
+        }
+
         body {
-            background: url('velvet_night_background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Refined Typography', serif;
+            margin: 0;
+            background-color: var(--fondo-noche);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Prata', serif;
         }
-        .envelope {
-            border: 5px solid gold;
-            background-color: turquoise;
-            animation: smoothAnimation 2s;
+
+        /* Partículas de polvo de oro */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.3;
+            z-index: 1;
         }
+
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            z-index: 10;
+            width: 320px;
+            height: 220px;
+            perspective: 1500px;
+        }
+
+        /* Sobre con textura de arabesco */
+        .envelope-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--turquesa-real);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            border: 2px solid var(--oro-puro);
+            z-index: 3;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 50%, 100% 0);
+        }
+
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--turquesa-luz);
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            border-top: 2px solid var(--oro-puro);
+            z-index: 4;
+            clip-path: polygon(0 0, 100% 0, 50% 50%);
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Sello de Cera Real */
         .seal {
-            background: url('wax_seal_magic_lamp.png') no-repeat center;
-            width: 50px;
-            height: 50px;
-            animation: smoothAnimation 2s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px;
+            height: 55px;
+            background: radial-gradient(circle, #f1d570 0%, var(--oro-puro) 100%);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 0 5px white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
         }
+
+        /* La Carta (Papel de Lujo) */
         .card {
-            background: url('aged_parchment.jpg') no-repeat;
-            border: 2px solid filigree; 
-            animation: smoothAnimation 2s;
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 300px;
+            height: 200px;
+            background: var(--papel);
+            z-index: 1;
+            transition: transform 0.8s ease, height 0.8s 0.3s ease;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            border: 8px double var(--oro-puro); /* Borde doble elegante */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        @keyframes smoothAnimation {
-            from { opacity: 0; }
-            to { opacity: 1; }
+
+        /* Animación de apertura */
+        .envelope-wrapper.open .flap { transform: rotateX(180deg); z-index: 0; }
+        .envelope-wrapper.open .seal { opacity: 0; }
+        .envelope-wrapper.open .card {
+            transform: translateY(-260px);
+            height: 540px;
+            z-index: 10;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
         }
-        .dress-code {
-            color: metallic_turquoise;
+
+        h1 { font-family: 'Cinzel Decorative', cursive; color: var(--oro-viejo); font-size: 1.4rem; margin: 0; }
+        .name { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--turquesa-real); margin: 10px 0; font-style: italic; }
+        
+        .main-text { font-size: 0.85rem; line-height: 1.6; color: #333; margin: 10px 0; }
+        
+        .divider { width: 80%; height: 1px; background: linear-gradient(to right, transparent, var(--oro-puro), transparent); margin: 15px 0; }
+
+        .details { font-size: 0.9rem; color: #000; line-height: 1.5; }
+        .dress-code { margin-top: 15px; font-weight: bold; color: var(--oro-viejo); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .btn-container { width: 100%; margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+        .btn {
+            padding: 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid var(--oro-puro);
+            transition: 0.3s;
         }
+        .btn-wa { background: var(--turquesa-real); }
+        .btn-maps { background: #111; }
+
+        .tap-msg {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            color: var(--oro-puro);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            animation: breathe 2s infinite;
+        }
+        @keyframes breathe { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
     </style>
 </head>
 <body>
-    <div class="envelope">
-        <h1>Noche Real de Quince</h1>
-        <div class="seal"></div>
+    <div class="stars"></div>
+
+    <div class="envelope-wrapper" onclick="this.classList.add('open')">
         <div class="card">
-            <p>Dress Code: <span class="dress-code">Sport Elegante</span></p>
+            <h1>Mis 15 Años</h1>
+            <div class="name">Jazmin</div>
+            
+            <div class="main-text">
+                "Hace 15 años iluminaste nuestras vidas, y hoy celebramos con orgullo la hermosa joven en la que te has convertido."<br><br>
+                "Queremos invitarte a ser parte de esta noche mágica..."
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="details">
+                <strong>MARTES 18 DE AGOSTO - 21:00 HS</strong><br>
+                Salón de Eventos Coopejas<br>
+                J. Augusto Saldívar
+            </div>
+
+            <div class="dress-code">
+                Vestimenta: Sport elegante
+            </div>
+
+            <div class="btn-container">
+                <a href="https://wa.me/595982432818" class="btn btn-wa" onclick="event.stopPropagation()">Confirmar Asistencia</a>
+                <a href="https://maps.app.goo.gl/tu-link-aqui" class="btn btn-maps" target="_blank" onclick="event.stopPropagation()">Ver Ubicación</a>
+            </div>
         </div>
-        <button style="background-color: metallic_turquoise;">RSVP</button>
-        <button style="background-color: polished_onyx;">More Info</button>
+
+        <div class="envelope-front"></div>
+        <div class="flap">
+            <div class="seal"><span>✨</span></div>
+        </div>
+        <div class="tap-msg">TOCAR PARA ABRIR</div>
     </div>
-    <script>
-        // Add smooth animations
-    </script>
 </body>
 </html>
