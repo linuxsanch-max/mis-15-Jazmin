@@ -27,7 +27,6 @@
             position: relative;
         }
 
-        /* Fondo elegante con terciopelo y polvo dorado */
         .background {
             position: absolute;
             inset: 0;
@@ -53,7 +52,7 @@
             z-index: 10;
         }
 
-        /* Sobre turquesa con filigrana */
+        /* Sobre cerrado con filigrana */
         .envelope-front {
             position: absolute;
             width: 100%;
@@ -67,7 +66,7 @@
             z-index: 3;
         }
 
-        /* Solapa (flap) con borde ornamental y zafiro central */
+        /* Solapa cerrada con zafiro y sello de cera */
         .flap {
             position: absolute;
             width: 100%;
@@ -78,11 +77,10 @@
             z-index: 7;
             clip-path: polygon(0 0, 100% 0, 50% 48%);
             transform-origin: top;
-            transition: transform 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
+            transition: transform 1.8s cubic-bezier(0.65, 0.05, 0.2, 1);
             box-shadow: 0 25px 45px rgba(0,0,0,0.75);
         }
 
-        /* Adorno central: Gran Zafiro + filigrana */
         .jewel {
             position: absolute;
             top: 42%;
@@ -94,15 +92,13 @@
             border: 6px solid var(--oro);
             border-radius: 50%;
             z-index: 8;
-            box-shadow: 0 0 35px rgba(160,216,255,0.9),
-                        inset 0 0 25px rgba(255,255,255,0.7);
+            box-shadow: 0 0 35px rgba(160,216,255,0.9), inset 0 0 25px rgba(255,255,255,0.7);
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 1.9rem;
         }
 
-        /* Sello de cera dorado con lámpara y "J" */
         .wax-seal {
             position: absolute;
             top: 68%;
@@ -123,7 +119,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.6);
         }
 
-        /* Texto exterior en la solapa */
         .envelope-text {
             position: absolute;
             bottom: 22%;
@@ -136,6 +131,44 @@
             text-align: center;
             z-index: 8;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Botón para abrir */
+        .open-btn {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--turquesa), var(--turquesa-oscuro));
+            color: white;
+            border: 2px solid var(--oro);
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 8px 20px rgba(0,180,168,0.4);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .open-btn:hover {
+            transform: translateX(-50%) scale(1.08);
+            box-shadow: 0 12px 30px rgba(232,197,110,0.5);
+        }
+
+        /* Efecto de humo mágico */
+        .smoke {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,180,168,0.6), transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 15;
+            transition: opacity 1.2s ease;
+            border-radius: 50%;
         }
 
         /* Tarjeta */
@@ -154,9 +187,9 @@
             transition: all 1.6s cubic-bezier(0.65, 0.05, 0.2, 1);
             z-index: 5;
             box-shadow: 0 30px 70px rgba(0,0,0,0.92);
+            opacity: 0;
         }
 
-        /* Animación corregida - la tarjeta sale al frente */
         .envelope-wrapper.open .flap { 
             transform: rotateX(188deg); 
             z-index: 2;
@@ -169,24 +202,41 @@
         .envelope-wrapper.open .card {
             transform: translateY(-255px);
             height: 590px;
-            z-index: 12;   /* Ahora está claramente al frente */
+            z-index: 12;
+            opacity: 1;
         }
 
-        /* Contenido de la tarjeta */
+        /* Contenido tarjeta */
         .subtitle { font-size: 0.78rem; letter-spacing: 3.5px; color: var(--oro); margin-bottom: 8px; }
         h1 { font-family: 'Cinzel Decorative', cursive; font-size: 1.48rem; color: var(--turquesa-oscuro); margin-bottom: 10px; }
         .name { font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--turquesa); margin: 12px 0 20px; }
         .main-text { font-size: 0.93rem; line-height: 1.62; color: #333; margin: 18px 0; }
         .divider { width: 85px; height: 2px; background: linear-gradient(to right, transparent, var(--oro), transparent); margin: 22px auto; }
-        .info { font-size: 0.97rem; line-height: 1.48; color: #222; }
-        .dress-code { font-size: 0.84rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 1.5px; margin: 24px 0 28px; }
+        .info { font-size: 0.97rem; line-height: 1.48; color: #222; margin-bottom: 18px; }
+        .dress-code { font-size: 0.84rem; font-weight: bold; color: var(--oro); text-transform: uppercase; letter-spacing: 1.5px; margin: 20px 0 24px; }
 
         .confirm-text {
-            margin-top: 20px;
             font-size: 0.9rem;
             color: var(--turquesa-oscuro);
             font-weight: bold;
+            margin: 12px 0 8px;
         }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.87rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--turquesa-oscuro), var(--turquesa));
+            border: 2px solid var(--oro);
+            transition: all 0.4s;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(232,197,110,0.5); }
     </style>
 </head>
 <body>
@@ -194,7 +244,7 @@
     <div class="background"></div>
     <div class="dust"></div>
 
-    <div class="envelope-wrapper" onclick="this.classList.add('open')">
+    <div class="envelope-wrapper" id="envelope">
         
         <!-- Tarjeta -->
         <div class="card">
@@ -217,21 +267,53 @@
             <div class="dress-code">VESTIMENTA: SPORT ELEGANTE</div>
 
             <div class="confirm-text">
-                Confirma tu asistencia en:<br>
-                <strong>linuxsanch-max.github.io/mis-15-Jazmin</strong>
+                Por favor confirma tu asistencia<br>
+                <strong>una semana antes</strong>
             </div>
+
+            <a href="https://wa.me/595982432818" class="btn">CONFIRMAR ASISTENCIA</a>
+            <a href="https://maps.app.goo.gl/a9MzNJCMQNCpWhhXA" class="btn">VER UBICACIÓN</a>
         </div>
 
-        <!-- Sobre -->
+        <!-- Sobre cerrado -->
         <div class="envelope-front"></div>
         
-        <!-- Solapa con zafiro y sello de cera -->
-        <div class="flap">
+        <!-- Solapa con joya y sello -->
+        <div class="flap" id="flap">
             <div class="jewel">💎</div>
             <div class="wax-seal">🪔</div>
             <div class="envelope-text">UNA NOCHE DE ENSUEÑO<br>EN AGRABAH</div>
         </div>
+
+        <!-- Botón para abrir -->
+        <button class="open-btn" id="openBtn">✨ HAZ CLIC AQUÍ PARA ABRIR EL SOBRE ✨</button>
+
+        <!-- Efecto de humo -->
+        <div class="smoke" id="smoke"></div>
     </div>
 
+    <script>
+        const envelope = document.getElementById('envelope');
+        const openBtn = document.getElementById('openBtn');
+        const smoke = document.getElementById('smoke');
+        const flap = document.getElementById('flap');
+
+        openBtn.addEventListener('click', () => {
+            // Mostrar humo mágico
+            smoke.style.opacity = '0.85';
+            
+            // Animación del humo desapareciendo
+            setTimeout(() => {
+                smoke.style.transition = 'opacity 1.8s ease';
+                smoke.style.opacity = '0';
+            }, 800);
+
+            // Abrir el sobre después de un pequeño delay
+            setTimeout(() => {
+                envelope.classList.add('open');
+                openBtn.style.display = 'none'; // Ocultar botón después de abrir
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
