@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación Especial - Mis 15 Años</title>
     <style>
         /* ================= Estilos (CSS) - Temática Arabia Mejorada ================= */
@@ -18,15 +18,16 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #081221 0%, #172844 50%, #0d1e36 100%);
-            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-attachment: fixed;
-            color: var(--color-texto);
-            margin: 0;
+            margin: 0; 
             padding: 0;
+            /* Este es el secreto: Mezcla de colores árabes con imagen de estrellas */
+            background: 
+                linear-gradient(to bottom, rgba(10, 20, 38, 0.7), rgba(45, 20, 80, 0.8)), 
+                url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1500') center/cover fixed no-repeat;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
             text-align: center;
+            color: var(--color-texto);
         }
 
         /* --- ESTILOS DEL SOBRE MÁGICO (SEGÚN IMAGEN) --- */
@@ -109,10 +110,10 @@
 
         /* Icono modificado por la letra J con efecto de bajo relieve */
         .sello-lacre::after {
-            content: "J";
-            font-family: 'Great Vibes', cursive; /* Usamos tu fuente elegante */
-            font-size: 4.5rem; /* Tamaño ideal para que destaque */
-            color: #8c6a08; /* Un dorado oscuro para que parezca grabado en el metal */
+            content: "J"; /* Letra de Jazmín */
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #8c6a08;
             text-shadow: 
                 -1px -1px 1px rgba(255,255,255,0.6), 
                 2px 2px 3px rgba(0,0,0,0.4);
@@ -139,13 +140,17 @@
         /* --- FIN ESTILOS SOBRE --- */
 
         section {
-            background: rgba(255, 255, 255, 0.95);
+            /* Fondo blanco con 85% de opacidad para que se vea el cielo de fondo */
+            background: rgba(255, 255, 255, 0.85); 
             margin: 25px 20px;
             padding: 40px 25px; 
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             border: 2px solid var(--color-oro);
             position: relative;
+            /* Esto hace que el fondo se vea borroso y elegante a través de la carta */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .icon-deco {
