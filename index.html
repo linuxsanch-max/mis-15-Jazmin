@@ -227,13 +227,56 @@
             filter: sepia(0.5) hue-rotate(160deg);
         }
 
+        /* ====== ENCABEZADO CORREGIDO: SIN BLANCO, TEXTO SOBRE FOTO ====== */
+        .header-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            background-color: transparent; 
+            line-height: 0; /* Elimina cualquier borde blanco debajo de la imagen */
+        }
+
         .hero-img {
             width: 100%;
-            display: block;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            display: block; /* Asegura que no queden espacios en blanco */
         }
-        
+
+        .header-text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%; /* El degradado solo cubre la parte de abajo de la foto */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Empuja el texto hacia abajo */
+            align-items: center;
+            padding-bottom: 25px;
+            z-index: 5;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%); 
+        }
+
+        .overlay-text {
+            color: var(--color-oro-brillante) !important;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6);
+            font-size: 5.5rem !important; 
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        .h2-overlay {
+            color: #ffffff !important; 
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            margin-top: 5px;
+            line-height: 1;
+        }
+        /* ========================================================== */
+
         .secundaria-img {
             width: 90%;
             margin: 20px auto;
@@ -256,13 +299,13 @@
 
 <div class="container" id="invitacion-main">
     
-    <div style="background: white; padding-top: 25px;">
-        <span class="icon-deco" style="margin-bottom: 0;">👑</span>
-        <h1 class="title-cursive">Jazmin</h1>
-        <h2 style="letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem; color: #555;">Mis 15 Años</h2>
+    <div class="header-container">
+        <img src="jazmin-completo.png" alt="Jazmín" class="hero-img">
+        <div class="header-text-overlay">
+            <h1 class="title-cursive overlay-text">Jazmin</h1>
+            <h2 class="h2-overlay">Mis 15 Años</h2>
+        </div>
     </div>
-    
-    <img src="jazmin-completo.png" alt="Jazmin" class="hero-img">
     
     <div class="banner-oro">Invitación Especial</div>
 
@@ -277,7 +320,7 @@
         </span>
 
         <h3>Verifica tu Pase</h3>
-        <p>Escribe tu nombre para verificar tu N° de pase</p>
+        <p>Escribe tu nombre para verificar tu N° de lugares reservados</p>
         <input type="text" id="nombreInvitado" placeholder="Ej. Lucia Ayala" list="lista-invitados-data">
         <datalist id="lista-invitados-data"></datalist>
         <br>
@@ -309,7 +352,7 @@
         <h3>Recepción</h3>
         <p>Salón de Eventos de Coopejas<br>J. Augusto Saldivar</p>
         <p><strong style="font-size: 1.5rem; color: var(--color-aguamarina);">21:00 p.m</strong></p>
-        <a href="https://maps.app.goo.gl/uxWfFwUpjYnjgxFK7?g_st=aw" target="_blank" style="text-decoration: none;">
+        <a href="maps.google.com/0" target="_blank" style="text-decoration: none;">
             <button class="btn btn-oro">Ver Ubicación 📍</button>
         </a>
     </section>
