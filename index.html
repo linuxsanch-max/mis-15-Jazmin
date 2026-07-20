@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Lenys Sánchez"> <title>Invitación Especial - Mis 15 Años de Jazmín</title>
+    <meta name="author" content="Lenys Sánchez">
+    
+    <!-- Etiquetas para la vista previa en WhatsApp -->
+    <meta property="og:title" content="Mis 15 Años de Jazmín - Invitación Especial">
+    <meta property="og:description" content="Te invitamos a compartir esta noche mágica. ¡Haz clic para ver tu pase!">
+    <meta property="og:image" content="sobre-arabe.png">
+    
+    <title>Invitación Especial - Mis 15 Años de Jazmín</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
 
@@ -26,7 +33,7 @@
             color: var(--color-texto);
         }
 
-        /* --- CAPA INICIAL CON EL SOBRE Y LA LÁMPARA MÁS GRANDES --- */
+        /* --- CAPA INICIAL CON EL SOBRE Y LA LÁMPARA AMPLIADOS --- */
         #sobre-capa {
             position: fixed;
             top: 0; left: 0;
@@ -249,6 +256,7 @@
 </head>
 <body>
 
+<!-- PANTALLA INICIAL CON EL SOBRE Y LA LÁMPARA AMPLIADOS -->
 <div id="sobre-capa">
     <div class="contenedor-central-sobre" onclick="abrirSobre()">
         <img src="sobre-arabe.png" alt="Sobre de Invitación" class="imagen-sobre-real">
@@ -257,12 +265,13 @@
     <p style="position: absolute; bottom: 12%; width: 100%; color: #fff; font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 1px 1px 4px #000; pointer-events: none;">Toca el sobre o el sello para abrir...</p>
 </div>
 
+<!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
 <div class="container" id="invitacion-main">
     
     <div class="header-container">
         <img src="jazmin-completo.png" alt="Jazmín" class="hero-img">
         <div class="header-text-overlay">
-            <h1 class="title-cursive overlay-text">Liliana Jazmin</h1>
+            <h1 class="title-cursive overlay-text">Jazmin</h1>
             <h2 class="h2-overlay">Mis 15 Años</h2>
         </div>
     </div>
@@ -296,7 +305,7 @@
             <img src="luna-arabe.png" alt="Luna Árabe" class="icono-realista">
         </div>
 
-        <h3 style="font-size: 1.7rem; margin-bottom: 5px;">Martes 18 de Agosto</h3>
+        <h3 style="font-size: 1.7rem; margin-bottom: 5px;">Martes 18 de Agosto 2026</h3>
         <p><strong style="font-size: 1.5rem; color: var(--color-aguamarina);">20:30 p.m</strong></p>
     </section>
 
@@ -353,7 +362,7 @@
     }
 
     const listaInvitados = {
-        "Hugo González": 1, "Verónica Sánchez": 3, "Cristina Sánchez": 4, "Johana y Angel": 2, "Fermina Sánchez": 3, "Hugo Sánchez y Flia.": 6, "Sandra Escobar": 3, "Pabla Sánchez": 3, "Gregoria Burgos": 2, "Graciela Martínez": 3, "Mercedes Sánchez": 4, "Daniel Duarte": 1, "Cinthia Alonso": 1, "Yisselle Alonso": 3, "Isaac Alonso": 1, "Leticia Presentado": 1, "Nancy Leguizamón y Flia.": 7, "Mario Alvarez y Flia.": 3, "Celeste Alvarez": 3, "Claudia y Flia.": 5, "Sra. Rosa Isabel y Esposo": 2, "Sr. Julian": 1, "Sr. Erasmo": 1, "Sr. Oscar y Esposa": 2, "Laura Correa y Flia.": 4, "Antonia Fernández y Flia.": 3, "Marisa y Esposo": 2
+        "Hugo González": 1, "Verónica Sánchez": 3, "Cristina Sánchez": 4, "Johana y Angel": 2, "Fermina Sánchez": 3, "Hugo Sánchez y Flia.": 6, "Sandra Escobar": 3, "Pabla Sánchez": 3, "Gregoria Burgos": 2, "Graciela Martínez": 3, "Mercedes Sánchez": 4, "Daniel Duarte": 1, "Cinthia Alonso": 1, "Yisselle Alonso": 2, "Isaac Alonso": 1, "Leticia Presentado": 1, "Nancy Leguizamón y Flia.": 7, "Mario Alvarez y Flia.": 3, "Celeste Alvarez": 3, "Claudia y Flia.": 5, "Sra. Rosa Isabel y Esposo": 2, "Sr. Julian": 1, "Sr. Erasmo": 1, "Sr. Oscar y Esposa": 2, "Laura Correa y Flia.": 4, "Antonia Fernández y Flia.": 3, "Marisa y Esposo": 2
     };
 
     const datalist = document.getElementById('lista-invitados-data');
@@ -373,8 +382,7 @@
         const numeroWhatsApp = "595982432818"; 
         const pases = listaNormalizada[nombreInput];
         if(pases) {
-            const palabraLugar = pases === 1 ? 'lugar' : 'lugares';
-            divResultado.innerHTML = `¡Hola! Hemos reservado <strong>${pases} ${palabraLugar}</strong> para usted.`;
+            divResultado.innerHTML = `¡Hola! Hemos reservado <strong>${pases} lugares</strong> para usted.`;
         } else {
             divResultado.innerHTML = `<span style="color: #c62828;">Nombre no encontrado.</span><br><a href="https://wa.me/${numeroWhatsApp}?text=Hola, no encuentro mi nombre: ${nombreInput}" target="_blank" style="color: var(--color-aguamarina); font-size: 0.85rem; text-decoration: underline; display: block; margin-top: 10px; font-weight: 600;">¿No encuentras tu nombre? Contacta con nosotros</a>`;
         }
