@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Especial - Mis 15 Años</title>
+    <meta name="author" content="Lenys Sánchez"> <title>Invitación Especial - Mis 15 Años de Jazmín</title>
     <style>
-        /* ================= Estilos (CSS) - Temática Arabia Mejorada ================= */
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
 
         :root {
@@ -13,8 +12,6 @@
             --color-oro-brillante: #fcf6ba;
             --color-aguamarina: #0d7c81;
             --color-texto: #333;
-            --color-purpura: #6a1b9a;
-            --color-turquesa: #00ced1;
         }
 
         body {
@@ -22,19 +19,19 @@
             padding: 0;
             background: 
                 linear-gradient(to bottom, rgba(10, 20, 38, 0.7), rgba(45, 20, 80, 0.8)), 
-                url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1500') center/cover fixed no-repeat;
+                url('fondo-palacio.jpg') center/cover fixed no-repeat;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             text-align: center;
             color: var(--color-texto);
         }
 
-        /* --- ESTILOS DEL SOBRE MÁGICO --- */
+        /* --- CAPA INICIAL CON EL SOBRE Y LA LÁMPARA MÁS GRANDES --- */
         #sobre-capa {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000') center/cover;
+            background: url('fondo-palacio.jpg') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -46,73 +43,52 @@
             content: "";
             position: absolute;
             width: 100%; height: 100%;
-            background: rgba(8, 18, 33, 0.7);
+            background: rgba(10, 15, 25, 0.4);
         }
 
-        .sobre {
+        .contenedor-central-sobre {
             position: relative;
-            width: 350px;
-            height: 230px;
-            background: #1e262c url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            box-shadow: 0 50px 100px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            z-index: 5;
-            overflow: visible;
-        }
-
-        .sobre::before, .sobre::after {
-            content: "";
-            position: absolute;
-            background: var(--color-turquesa);
-            height: 2px;
-            width: 120%;
-            top: 50%; left: -10%;
-            opacity: 0.8;
-            box-shadow: 0 0 10px var(--color-turquesa);
-        }
-        .sobre::before { transform: rotate(33deg); }
-        .sobre::after { transform: rotate(-33deg); }
-
-        .sobre-solapa {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #2a353d url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            clip-path: polygon(0 0, 100% 0, 50% 50%);
-            border-bottom: 2px solid #00e5ff;
-            transform-origin: top;
-            transition: transform 1s ease-in-out;
-            z-index: 5;
-        }
-
-        .sello-lacre {
-            position: absolute;
-            top: 55%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85px; height: 85px;
-            background: radial-gradient(circle, #fcf6ba, #d4af37);
-            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 10px rgba(0,0,0,0.3);
-            border: 2px solid #b5952f;
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            justify-content: center;
+            z-index: 5;
+            cursor: pointer;
         }
 
-        .sello-lacre::after {
-            content: "J";
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            color: #8c6a08;
-            text-shadow: -1px -1px 1px rgba(255,255,255,0.6), 2px 2px 3px rgba(0,0,0,0.4);
+        /* Sobre más grande */
+        .imagen-sobre-real {
+            width: 600px;
+            max-width: 88vw;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.85);
+            border: 3px solid var(--color-oro);
+            transition: transform 0.3s ease;
         }
 
-        .sobre-abierto .sobre-solapa { transform: rotateX(160deg); }
-        .sobre-oculto { transform: translateY(100%) scale(0.8); opacity: 0; pointer-events: none; }
+        .contenedor-central-sobre:hover .imagen-sobre-real {
+            transform: scale(1.02);
+        }
 
+        /* Lámpara mágica más grande al lado del sobre */
+        .lampara-flotante {
+            position: absolute;
+            right: -130px;
+            bottom: -20px;
+            width: 180px;
+            height: auto;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8));
+            z-index: 8;
+            pointer-events: none;
+        }
+
+        .sobre-oculto { 
+            transform: translateY(100%) scale(0.8); 
+            opacity: 0; 
+            pointer-events: none; 
+        }
+
+        /* --- RESTO DE LA INVITACIÓN --- */
         .container {
             max-width: 500px;
             margin: 0 auto;
@@ -126,7 +102,7 @@
         .container.visible { opacity: 1; }
 
         section {
-            background: rgba(255, 255, 255, 0.85); 
+            background: rgba(255, 255, 255, 0.88); 
             margin: 25px 20px;
             padding: 40px 25px; 
             border-radius: 15px;
@@ -134,15 +110,6 @@
             border: 2px solid var(--color-oro);
             position: relative;
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        .icon-deco {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 2px rgba(212, 175, 55, 0.5));
-            opacity: 0.9;
         }
 
         .banner-oro {
@@ -170,15 +137,6 @@
             font-size: 4rem;
             color: var(--color-aguamarina);
             margin: 5px 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .nombres-padres {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: #444;
-            line-height: 1.6;
-            margin-top: 10px;
         }
 
         input[type="text"] {
@@ -201,7 +159,6 @@
             font-size: 1rem;
             cursor: pointer;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             margin: 5px;
         }
@@ -227,40 +184,33 @@
             filter: sepia(0.5) hue-rotate(160deg);
         }
 
-        /* ====== ENCABEZADO CORREGIDO: SIN BLANCO, TEXTO SOBRE FOTO ====== */
         .header-container {
             position: relative;
             width: 100%;
             overflow: hidden;
             border-radius: 0 0 30px 30px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-            background-color: transparent; 
-            line-height: 0; /* Elimina cualquier borde blanco debajo de la imagen */
+            line-height: 0;
         }
 
-        .hero-img {
-            width: 100%;
-            display: block; /* Asegura que no queden espacios en blanco */
-        }
+        .hero-img { width: 100%; display: block; }
 
         .header-text-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%; /* El degradado solo cubre la parte de abajo de la foto */
+            bottom: 0; left: 0;
+            width: 100%; height: 40%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Empuja el texto hacia abajo */
+            justify-content: flex-end;
             align-items: center;
             padding-bottom: 25px;
             z-index: 5;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%); 
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
         }
 
         .overlay-text {
             color: var(--color-oro-brillante) !important;
-            text-shadow: 3px 3px 8px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
             font-size: 5.5rem !important; 
             margin-bottom: 0;
             line-height: 1;
@@ -273,20 +223,38 @@
             text-transform: uppercase;
             font-size: 1.3rem;
             margin-top: 5px;
-            line-height: 1;
         }
-        /* ========================================================== */
+        
+        .icono-contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
 
+        .icono-realista {
+            height: 70px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
+        .pase-ticket {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+            transform: rotate(-12deg);
+        }
     </style>
 </head>
 <body>
 
 <div id="sobre-capa">
-    <div class="sobre" id="sobre-contenedor">
-        <div class="sobre-solapa"></div>
-        <div class="sello-lacre" onclick="abrirSobre()"></div>
-        <p style="position: absolute; bottom: -80px; width: 100%; color: white; font-family: 'Playfair Display'; font-style: italic; letter-spacing: 1px;">Toca el sello dorado para abrir el sobre...</p>
+    <div class="contenedor-central-sobre" onclick="abrirSobre()">
+        <img src="sobre-arabe.png" alt="Sobre de Invitación" class="imagen-sobre-real">
+        <img src="lampara-aladino.png" alt="Lámpara Mágica" class="lampara-flotante">
     </div>
+    <p style="position: absolute; bottom: 12%; width: 100%; color: #fff; font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 1px 1px 4px #000; pointer-events: none;">Toca el sobre o el sello para abrir...</p>
 </div>
 
 <div class="container" id="invitacion-main">
@@ -294,7 +262,7 @@
     <div class="header-container">
         <img src="jazmin-completo.png" alt="Jazmín" class="hero-img">
         <div class="header-text-overlay">
-            <h1 class="title-cursive overlay-text">Jazmin</h1>
+            <h1 class="title-cursive overlay-text">Liliana Jazmin</h1>
             <h2 class="h2-overlay">Mis 15 Años</h2>
         </div>
     </div>
@@ -309,14 +277,10 @@
     </section>
 
     <section>
-        <span class="icon-deco" style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 20px;">
-            <svg viewBox="0 0 24 24" width="45" height="45" style="fill: var(--color-aguamarina); opacity: 0.9;">
-                <path d="M12,4c2.21,0,4,1.79,4,4s-1.79,4-4,4s-4-1.79-4-4S9.79,4,12,4z M12,13c4.42,0,8,3.58,8,8v1H4v-1C4,16.58,7.58,13,12,13z"/>
-            </svg>
-            <svg viewBox="0 0 24 24" width="60" height="60" style="fill: var(--color-oro); filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.5));">
-                <path d="M21,11c0,0-2-1-4-1s-3,1-3,1l-1,0c0,0,0-1-1-2c-1-1-3-1-3-1l-1,0c0,0-1,0-2,1c-1,1-1,2-1,2h-1c0,0-2,0-2,2s2,2,2,2h1 c0,2,2,4,4,4h4c2,0,4-2,4-4h1c0,0,4,0,4-2S21,11,21,11z M16,15c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2v-2h10V15z M17,11H5 c0-0.6,0.4-1,1-1h10C16.6,10,17,10.4,17,11z"/>
-            </svg>
-        </span>
+        <div class="icono-contenedor">
+            <img src="lampara-aladino.png" alt="Lámpara Mágica" class="icono-realista" style="height: 75px;">
+            <img src="pase-invitados.png" alt="Pase de Invitados" class="pase-ticket">
+        </div>
 
         <h3>Verifica tu Pase</h3>
         <p>Escribe tu nombre para verificar tu N° de lugares reservados</p>
@@ -328,36 +292,44 @@
     </section>
 
     <section>
-        <span class="icon-deco">🌙</span>
-        <h3 style="font-size: 1.7rem; margin-bottom: 25px;">Martes 18 de Agosto 2026</h3>
-        
-        <div style="border-top: 1px dashed var(--color-oro); padding-top: 25px;">
-            <h3 style="font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px;">Mis Padres</h3>
-            <p class="nombres-padres">Julio Alonso<br>Maria Liliana Escobar</p>
+        <div class="icono-contenedor">
+            <img src="luna-arabe.png" alt="Luna Árabe" class="icono-realista">
         </div>
+
+        <h3 style="font-size: 1.7rem; margin-bottom: 5px;">Martes 18 de Agosto</h3>
+        <p><strong style="font-size: 1.5rem; color: var(--color-aguamarina);">20:30 p.m</strong></p>
     </section>
 
     <section>
-        <span class="icon-deco">🕌</span>
+        <div class="icono-contenedor">
+            <img src="recepcion-palacio.png" alt="Palacio Recepción" class="icono-realista" style="height: 85px;">
+        </div>
+
         <h3>Recepción</h3>
         <p>Salón de Eventos de Coopejas<br>J. Augusto Saldivar</p>
-        <p><strong style="font-size: 1.5rem; color: var(--color-aguamarina);">21:00 p.m</strong></p>
-        <a href="maps.google.com/0" target="_blank" style="text-decoration: none;">
-            <button class="btn btn-oro">Ver Ubicación 📍</button>
+        <a href="https://maps.google.com/?q=Coopejas+J.+Augusto+Saldivar" target="_blank" style="text-decoration: none;">
+            <button class="btn btn-oro" style="margin-top: 15px;">Ver Ubicación 📍</button>
         </a>
     </section>
 
     <section>
-        <span class="icon-deco">👗</span>
-        <h3>Vestimenta</h3>
-        <p style="font-size: 1.3rem; color: var(--color-aguamarina); margin-bottom: 5px;"><strong>SPORT ELEGANTE</strong></p>
-        <p><em>El color es a elección.</em></p>
+        <div class="icono-contenedor">
+            <img src="traje-hombre.png" alt="Traje Elegante Hombre" class="icono-realista">
+            <img src="vestido-mujer.png" alt="Vestido Elegante Mujer" class="icono-realista">
+        </div>
+        
+        <h3>Tenida</h3>
+        <p style="font-size: 1.3rem; color: var(--color-aguamarina); margin-bottom: 5px;"><strong>ELEGANTE</strong></p>
+        <p><em>El color turquesa se reserva para la quinceañera.</em></p>
     </section>
 
     <section style="background: #fffcf5;">
-        <span class="icon-deco">👑</span>
+        <div class="icono-contenedor">
+            <img src="corona-quince.png" alt="Corona de Quinceañera" class="icono-realista">
+        </div>
+
         <h2 class="title-cursive" style="font-size: 2.8rem; margin-top: 0;">Confirma Tu Asistencia</h2>
-        <p style="font-weight: 600; color: var(--color-oro);">15 Días Antes</p>
+        <p style="font-weight: 600; color: var(--color-oro);">Hasta el 31 de Julio</p>
         <p>Te espero para compartir ésa noche que será mágica e inolvidable.</p>
         <input type="text" id="nombreConfirma" placeholder="Nombre(s) de quien asistirá">
         <br>
@@ -371,22 +343,17 @@
 
 <script>
     function abrirSobre() {
-        const contenedor = document.getElementById('sobre-contenedor');
         const capa = document.getElementById('sobre-capa');
         const invMain = document.getElementById('invitacion-main');
         const musica = document.getElementById('miMúsica');
 
-        contenedor.classList.add('sobre-abierto');
-        
-        setTimeout(() => {
-            capa.classList.add('sobre-oculto');
-            invMain.classList.add('visible');
-            musica.play().catch(e => console.log("Música iniciada"));
-        }, 1200);
+        capa.classList.add('sobre-oculto');
+        invMain.classList.add('visible');
+        musica.play().catch(e => console.log("Música iniciada"));
     }
 
     const listaInvitados = {
-        "Verónica Sánchez": 3, "Cristina Sánchez": 4, "Angel Sánchez": 2, "Fermina Sánchez": 4, "Sandra Escobar": 3, "Pabla Sánchez": 2, "Gregoria Burgos": 2, "Graciela Martínez": 3, "Mercedes Sánchez": 4, "Daniel Duarte": 1, "Cinthia Alonso": 3, "Yisselle Alonso": 3, "Isaac Alonso": 1, "Leticia Presentado": 1, "Nancy Leguizamón y Flia.": 7, "Mario Alvarez y Flia.": 3, "Celeste Alvarez": 3, "Claudia y Flia.": 5, "Sra. Rosa Isabel": 2, "Sr. Julian": 1, "Sr. Erasmo": 1, "Sr. Oscar y Esposa": 2, "Laura Correa y Flia.": 4, "Milagros": 1, "Karian": 1, "Kristyn": 1, "Noelia": 1, "Lucas": 1, "Cesar": 1, "Lili": 1, "Nubia": 1, "Monse": 1, "Jorgelina": 1, "Marian": 1, "Meli": 1, "Rodolfito": 1, "Matias": 1,
+        "Hugo González": 1, "Verónica Sánchez": 3, "Cristina Sánchez": 4, "Johana y Angel": 2, "Fermina Sánchez": 3, "Hugo Sánchez y Flia.": 6, "Sandra Escobar": 3, "Pabla Sánchez": 3, "Gregoria Burgos": 2, "Graciela Martínez": 3, "Mercedes Sánchez": 4, "Daniel Duarte": 1, "Cinthia Alonso": 1, "Yisselle Alonso": 3, "Isaac Alonso": 1, "Leticia Presentado": 1, "Nancy Leguizamón y Flia.": 7, "Mario Alvarez y Flia.": 3, "Celeste Alvarez": 3, "Claudia y Flia.": 5, "Sra. Rosa Isabel y Esposo": 2, "Sr. Julian": 1, "Sr. Erasmo": 1, "Sr. Oscar y Esposa": 2, "Laura Correa y Flia.": 4, "Antonia Fernández y Flia.": 3, "Marisa y Esposo": 2
     };
 
     const datalist = document.getElementById('lista-invitados-data');
@@ -406,7 +373,8 @@
         const numeroWhatsApp = "595982432818"; 
         const pases = listaNormalizada[nombreInput];
         if(pases) {
-            divResultado.innerHTML = `¡Hola! Hemos reservado <strong>${pases} lugares</strong> para usted.`;
+            const palabraLugar = pases === 1 ? 'lugar' : 'lugares';
+            divResultado.innerHTML = `¡Hola! Hemos reservado <strong>${pases} ${palabraLugar}</strong> para usted.`;
         } else {
             divResultado.innerHTML = `<span style="color: #c62828;">Nombre no encontrado.</span><br><a href="https://wa.me/${numeroWhatsApp}?text=Hola, no encuentro mi nombre: ${nombreInput}" target="_blank" style="color: var(--color-aguamarina); font-size: 0.85rem; text-decoration: underline; display: block; margin-top: 10px; font-weight: 600;">¿No encuentras tu nombre? Contacta con nosotros</a>`;
         }
@@ -416,7 +384,7 @@
         const nombre = document.getElementById("nombreConfirma").value.trim();
         const numeroWhatsApp = "595982432818"; 
         if (nombre === "") { alert("Por favor, ingresa tu nombre antes de confirmar."); return; }
-        let mensaje = (respuesta === 'Si') ? `Hola Liliana, confirmo mi asistencia: ${nombre}.` : `Hola Liliana, no podré asistir: ${nombre}.`;
+        let mensaje = (respuesta === 'Si') ? `Liliana, confirmo mi asistencia: ${nombre}.` : `Liliana, no podré asistir: ${nombre}.`;
         window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`, "_blank");
     }
 </script>
